@@ -1,0 +1,27 @@
+version: "3.9"
+services:
+  mongodb:
+    image: mongo
+    container_name: mongodb_server
+    restart: always
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=root
+      - MONGO_INITDB_ROOT_PASSWORD=F36kk7X8DnBNY8rT
+    volumes:
+      - ~/apps/mongo:/data/db
+      # - local:container
+
+  app:
+    depends_on:
+      - mongodb
+    container_name: "node_app"
+    image: app
+    restart: always
+    build:
+      context: .
+      dockerfile: dockerfile
+    environment:
+      - NODE_ENV=prod
+# app: "IPAddress": "172.18.0.3
+# mongo "IPAddress": "172.18.0.2",
+# manual redis "IPAddress": "172.17.0.2",

@@ -1,6 +1,6 @@
 const x = "ali";
 const y = "mohammad";
-const t = 25;
+const t1 = 25;
 
 // dynamic property name
 const ob = {
